@@ -1,0 +1,3 @@
+requests==2.22.0
+requestsexceptions==1.4.0
+Telethon==1.13.0
