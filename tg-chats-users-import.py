@@ -171,7 +171,7 @@ if import_limit > 0:
 else:
     log.info(f"✔ [IMPORT] Add all users to chat @{target_chat}")
 
-log.info (f"☻ [IMPORT] Users: {usernames_import}")
+log.info(f"☻ [IMPORT] Users: {usernames_import}")
 client(InviteToChannelRequest(
     target_chat,
     usernames_import
