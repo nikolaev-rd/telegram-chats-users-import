@@ -15,6 +15,11 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from pathlib import Path
 import logging
 
+# Defaults
+proxy_host = ''
+proxy_port = 443
+proxy_secret = '00000000000000000000000000000000'
+
 # Load config
 from config import *
 
@@ -98,12 +103,18 @@ def filter_users(users, exclude_hidden:bool=True, exclude_bots:bool=True, exclud
 
 log.info("▶ Start script")
 
-client = TelegramClient(
-    api_id, 
-    api_id, api_hash, 
-    proxy=(proxy_host, proxy_port, proxy_secret), 
-    connection=connection.tcpmtproxy.ConnectionTcpMTProxyRandomizedIntermediate
-)
+if proxy_host:
+    client = TelegramClient(
+        api_id, 
+        api_id, api_hash, 
+        proxy=(proxy_host, proxy_port, proxy_secret), 
+        connection=connection.tcpmtproxy.ConnectionTcpMTProxyRandomizedIntermediate
+    )
+else:
+    client = TelegramClient(
+        api_id, 
+        api_id, api_hash
+    )
 client.start()
 
 
